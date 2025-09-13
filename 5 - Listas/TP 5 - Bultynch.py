@@ -115,75 +115,54 @@ print(f'El promedio de la materia 3 es: {materia3}')
 #Ejercicio 9
 
 tablero = [['-'] * 3 for _ in range(3)]
-print(tablero)
 
 while True:
-    jugardor1fila = str(input('Jugador 1 (X) ingrese la fila: '))
-    jugardor1columna = str(input('Jugador 1 (X) ingrese la columna: '))
-    jugardor2fila = str(input('Jugador 2 (O) ingrese la fila: '))
-    jugardor2columna = str(input('Jugador 2 (O) ingrese la columna: '))
 
-    tablero[int(jugardor1fila)][int(jugardor1columna)] = 'X'
-    tablero[int(jugardor2fila)][int(jugardor2columna)] = 'O'
     for fila in tablero:
         print("|".join(fila))
 
-    if tablero[0][0] == tablero[0][1] == tablero[0][2] != '-':
-        if tablero[0][0] == 'X':
-            print('Gana el jugador 1')
-            break
-        else:
-            print('Gana el jugador 2')
-            break
-    elif tablero[1][0] == tablero[1][1] == tablero[1][2] != '-':
-        if tablero[1][0] == 'X':
-            print('Gana el jugador 1')
-            break
-        else:
-            print('Gana el jugador 2')
-            break
-    elif tablero[2][0] == tablero[2][1] == tablero[2][2] != '-':
-        if tablero[2][0] == 'X':
-            print('Gana el jugador 1')
-            break
-        else:
-            print('Gana el jugador 2')
-            break
-    elif tablero[0][0] == tablero[1][0] == tablero[2][0] != '-':
-        if tablero[0][0] == 'X':
-            print('Gana el jugador 1')
-            break
-        else:
-            print('Gana el jugador 2')
-            break
-    elif tablero[0][1] == tablero[1][1] == tablero[2][1] != '-':
-        if tablero[0][1] == 'X':
-            print('Gana el jugador 1')
-            break
-        else:
-            print('Gana el jugador 2')
-            break
-    elif tablero[0][2] == tablero[1][2] == tablero[2][2] != '-':
-        if tablero[0][2] == 'X':
-            print('Gana el jugador 1')
-            break
-        else:
-            print('Gana el jugador 2')
-            break
-    elif tablero[0][0] == tablero[1][1] == tablero[2][2] != '-':
-        if tablero[0][0] == 'X':
-            print('Gana el jugador 1')
-            break
-        else:
-            print('Gana el jugador 2')
-            break
-    elif tablero[0][2] == tablero[1][1] == tablero[2][0] != '-':
-        if tablero[0][2] == 'X':
-            print('Gana el jugador 1')
-            break
-        else:
-            print('Gana el jugador 2')
-            break
+
+    fila1 = int(input('Jugador 1 ingrese la fila (0, 1, 2): '))
+    columna1 = int(input('Jugador 1 ingrese la columna (0, 1, 2): '))
+
+    if tablero[fila1][columna1] != '-':
+        print('Casilla ocupada, intente de nuevo.\n')
+        continue
+    tablero[fila1][columna1] = 'X'
+
+
+    if tablero[0][0] == tablero[0][1] == tablero[0][2] == 'X' or tablero[1][0] == tablero[1][1] == tablero[1][2] == 'X' or tablero[2][0] == tablero[2][1] == tablero[2][2] == 'X' or tablero[0][0] == tablero[1][0] == tablero[2][0] == 'X' or tablero[0][1] == tablero[1][1] == tablero[2][1] == 'X' or tablero[0][2] == tablero[1][2] == tablero[2][2] == 'X' or tablero[0][0] == tablero[1][1] == tablero[2][2] == 'X' or tablero[0][2] == tablero[1][1] == tablero[2][0] == 'X':
+        for fila in tablero:
+            print('|'.join(fila))
+        print('\n Ganó el jugador 1. \n')
+        break
+
+    for fila in tablero:
+        print("|".join(fila))
+
+
+    fila2 = int(input('Jugador 2 ingrese la fila (0, 1, 2): '))
+    columna2 = int(input('Jugador 2 ingrese la columna (0, 1, 2): '))
+    print('\n')
+
+    if tablero[fila2][columna2] != '-':
+        print('Casilla ocupada, intente de nuevo.\n')
+        continue
+    tablero[fila2][columna2] = 'O'
+
+
+    if tablero[0][0] == tablero[0][1] == tablero[0][2] == 'O' or tablero[1][0] == tablero[1][1] == tablero[1][2] == 'O' or tablero[2][0] == tablero[2][1] == tablero[2][2] == 'O' or tablero[0][0] == tablero[1][0] == tablero[2][0] == 'O' or tablero[0][1] == tablero[1][1] == tablero[2][1] == 'O' or tablero[0][2] == tablero[1][2] == tablero[2][2] == 'O' or tablero[0][0] == tablero[1][1] == tablero[2][2] == 'O' or tablero[0][2] == tablero[1][1] == tablero[2][0] == 'O':
+        for fila in tablero:
+            print('|'.join(fila))
+        print('\n Gana el jugador 2. \n')
+        break
+
+
+    if all(c != '-' for fila in tablero for c in fila):
+        for fila in tablero:
+            print('|'.join(fila))
+        print('\n Empate. \n')
+        break
     
 
 #Ejercicio 10
